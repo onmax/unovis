@@ -61,6 +61,37 @@ const chart = new XYContainer(container, {
 }, data)
 ```
 
+## Import Paths for Build-Constrained Environments
+
+The root barrel is still supported:
+
+```ts
+import { CurveType } from '@unovis/ts'
+```
+
+For smaller dependency graphs during build-time processing, use one of the additive lightweight entrypoints:
+
+```ts
+import { CurveType } from '@unovis/ts/enums'
+// or
+import { CurveType } from '@unovis/ts/types/curve'
+```
+
+See [`docs/vite-graph-analysis.md`](./docs/vite-graph-analysis.md) for details.
+
+## Vite Graph Harness
+
+```bash
+pnpm --filter @unovis/ts forcebuild
+pnpm --filter @unovis/ts check:vite-graph
+```
+
+With assertions:
+
+```bash
+pnpm --filter @unovis/ts check:vite-graph --assert
+```
+
 ## Documentation
 https://unovis.dev/docs/intro
 
